@@ -31,7 +31,7 @@ Retail-to-Revenue-Analysis/
     ├── 11.sql
     ├── 12.sql
     ├── 13.sql
-│   └── query_results.txt            # Resulting analysis of SQL queries
+│   └── Income insights.txt            # combined file of SQL queries
 ├── README.md                        # This readme file
 ```
 
@@ -62,7 +62,7 @@ The following SQL queries were executed to extract insights:
 4. Average age group of individuals working in Government and Non-Government sectors.
 5. Average number of working hours for males and females in Government and Non-Government jobs.
 
-The SQL queries can be found in the `queries.sql` file, and the results are provided in `query_results.txt`.
+The SQL queries can be found in the `1.sql` to '13.sql' files where you can see the queries i performed to make valuable insights, also these queries i combined it to a single file are provided in `Income insights`.
 
 ## How to Run
 
@@ -77,7 +77,7 @@ The SQL queries can be found in the `queries.sql` file, and the results are prov
      ```
 
 2. **Subtask 2 (SQL Analysis)**:
-   - Use the `queries.sql` file in a PostgreSQL environment to run the SQL queries.
+   - Use the `1.sql` to '2.sql' files in a PostgreSQL environment to run the SQL queries.
    - The database setup and execution instructions are included in the file.
 
 ## Dependencies
