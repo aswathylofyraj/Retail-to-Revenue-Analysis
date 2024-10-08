@@ -82,7 +82,7 @@ The SQL queries can be found in the `1.sql` to '13.sql' files where you can see 
 
 ## Dependencies
 
-- Python 3.8+
+- Python 
 - Libraries: pandas, matplotlib
 - PostgreSQL (for SQL queries)
 
