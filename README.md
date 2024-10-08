@@ -69,7 +69,7 @@ The SQL queries can be found in the `1.sql` to '13.sql' files where you can see 
 1. **Subtask 1 (Data Visualization)**:
    - Clone the repository:
      ```bash
-     git clone https://github.com/yourusername/Retail-to-Revenue-Analysis.git
+     git clone https://github.com/aswathylofyraj/Retail-to-Revenue-Analysis
      ```
    - Open the Jupyter notebook:
      ```bash
@@ -90,6 +90,3 @@ The SQL queries can be found in the `1.sql` to '13.sql' files where you can see 
 
 This project helped me apply data preprocessing, visualization techniques, and SQL querying to extract meaningful insights from retail and income datasets.
 
----
-
-This **README.md** provides a detailed overview of your work and makes it easy for anyone to understand the purpose, structure, and steps required to run the code in your GitHub repository. Let me know if you need further adjustments!
