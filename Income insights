@@ -1,0 +1,147 @@
+
+-- Table: public.individual_data
+
+-- DROP TABLE IF EXISTS public.individual_data;
+
+CREATE TABLE IF NOT EXISTS public.individual_data
+(
+    age integer,
+    workclass character varying(50) COLLATE pg_catalog."default",
+    fnlwgt integer,
+    education character varying(50) COLLATE pg_catalog."default",
+    education_num integer,
+    marital_status character varying(50) COLLATE pg_catalog."default",
+    occupation character varying(50) COLLATE pg_catalog."default",
+    relationship character varying(50) COLLATE pg_catalog."default",
+    sex character varying(10) COLLATE pg_catalog."default",
+    capital_gain integer,
+    capital_loss integer,
+    hours_per_week integer,
+    native_country character varying(50) COLLATE pg_catalog."default",
+    income character varying(10) COLLATE pg_catalog."default"
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.individual_data
+    OWNER to postgres;
+
+select * from individual_data;
+
+--Income of Individuals of Different Educations
+SELECT education, income, COUNT(*) AS count
+FROM individual_data
+GROUP BY education, income
+ORDER BY education, income;
+
+
+--Income of Individuals of Different Working classes
+SELECT workclass, income, COUNT(*) AS count
+FROM individual_data
+GROUP BY workclass, income
+ORDER BY workclass;
+
+
+--Income of individuals of Different Occupation with sex category
+SELECT occupation, sex, income, COUNT(*) AS count
+FROM individual_data
+GROUP BY occupation, sex, income
+ORDER BY 
+    CASE 
+        WHEN sex = 'Female' THEN 1
+        WHEN sex = 'Male' THEN 2
+        ELSE 3  -- For any other values, if present
+    END,
+    occupation, 
+    income;
+
+
+
+--Aggregate sum of capital.gain for individuals working in Govt with more than 10 years of education
+SELECT SUM(capital_gain) AS total_capital_gain
+FROM individual_data
+WHERE workclass = 'Local-gov' AND education_num > 10;
+
+
+--Average age information based on the education level
+SELECT education, AVG(age) AS average_age
+FROM individual_data
+GROUP BY education
+ORDER BY education;
+
+
+--Total capital gain and capital loss for each occupation
+SELECT occupation, 
+       SUM(capital_gain) AS total_capital_gain, 
+       SUM(capital_loss) AS total_capital_loss
+FROM individual_data
+GROUP BY occupation
+ORDER BY occupation;
+
+
+--Give observations on the Average Age Group of Individuals working in Govt and Non Govt.
+SELECT 
+    CASE 
+        WHEN workclass = 'Local-gov' THEN 'Government'
+        ELSE 'Non-Government'
+    END AS sector,
+    AVG(age) AS average_age
+FROM individual_data
+GROUP BY sector
+ORDER BY sector;
+
+
+--Give observations on the Average no. of hours of males and females Govt and Non Govt
+SELECT 
+    CASE 
+        WHEN workclass = 'Local-gov' THEN 'Government'
+        ELSE 'Non-Government'
+    END AS sector,
+    sex,
+    AVG(hours_per_week) AS average_hours
+FROM individual_data
+GROUP BY sector, sex
+ORDER BY sector, sex;
+
+
+--Based on individuals country and workclass, provide average spent on education for each workclass.
+SELECT 
+    workclass, 
+    native_country, 
+    AVG(education_num) AS average_spent_on_education
+FROM individual_data
+GROUP BY workclass, native_country
+ORDER BY workclass, native_country;
+
+
+--Top Occupations with Highest Capital Gain by Workclass
+SELECT workclass, occupation, total_capital_gain
+FROM (
+    SELECT 
+        workclass, 
+        occupation, 
+        SUM(capital_gain) AS total_capital_gain,
+        ROW_NUMBER() OVER (PARTITION BY workclass ORDER BY SUM(capital_gain) DESC) AS rank
+    FROM individual_data
+    GROUP BY workclass, occupation
+) ranked
+WHERE rank <= 3
+ORDER BY workclass, total_capital_gain DESC;
+
+
+--Average Age of Individuals with Capital Gain over 0 by Workclass
+SELECT workclass, AVG(age) AS average_age_with_gain
+FROM individual_data
+WHERE capital_gain > 0
+GROUP BY workclass
+ORDER BY average_age_with_gain DESC;
+
+
+--Income Distribution Count by Education Level and Workclass
+SELECT education, workclass, income, COUNT(*) AS count
+FROM individual_data
+GROUP BY education, workclass, income
+ORDER BY education, workclass, income;
+
+
+
