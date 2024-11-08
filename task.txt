@@ -1,1 +1,40 @@
+Task 1: Data Visualization, Databases, and SQL/NoSQL
+SubTask 1: Data Visualisation
+● Dataset: https://data.world/crawlfeeds/tesco-groceries-dataset
+● Instructions:
+○ Perform Data Cleaning and basic description of data
+○ EDA(exploratory data analysis) on the data to uncover trends or insights.
+○ Present the findings in a clear and concise manner.
+○ Hints: Python with Matplotlib,seaborn or Plotly, Power BI
+Sub Task 2: SQL/NoSQL/Pandas
+● Dataset:
+https://drive.google.com/file/d/11AURL6w7alYFI4MKeUwrjd3V6BW6wRVk/view?usp
+=drive_link
+● Instructions:
+1. Give your initial observations of the Data (column info)
+2. Give your Observations/plots on the following problems.
+● Income of Individuals of Different Educations.
+● Income of Individuals of Different Working classes.
+● Income of individuals of Different Occupation with sex category.
+3. Write SQL Queries for the following problems.
+○ Aggregate sum of capital.gain for individuals working in Govt with more than
+10 years of education
+○ Average age information based on the education level
+○ Total capital gain and capital loss for each occupation
+○ Give observations on the Average Age Group of Individuals working in Govt
+and Non Govt.
+○ Give observations on the Average no. of hours of males and females Govt
+and Non Govt.
 
+○ Based on individuals country and workclass, provide average spent on
+education for each workclass.
+
+● Hints :
+○ Write at least 3 advanced SQL queries to give the information about the
+dataset
+■ Use aggregations to calculate key metrics.
+■ Retrieve data based on certain conditions to Perform a JOIN between
+multiple tables to showcase relationships if needed.
+
+○ You can perform operations to retrieve and manipulate data efficiently, such
+as aggregation pipelines to group and filter data.
